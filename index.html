@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>addDefaultPushpinHTML</title>
+        <title>My Test Map</title>
         <!-- link to main stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
-        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
     </head>
     <body>
         <div id='printoutPanel'></div>
         
         <div id='myMap' style='width: 100vw; height: 100vh;'></div>
         <script type='text/javascript'>
-            function loadMapScenario() {
-                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-                    credentials: 'Your Bing Maps Key'
-                });
-                var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
-                map.entities.push(pushpin);
+                var map;
+                function loadMapScenario() {
+                    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                        credentials: 'Your Bing Maps Key'
+                    });
+                }
                 
-            }
+            
         </script>
         <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?branch=experimental&callback=loadMapScenario' async defer></script>
     </body>
