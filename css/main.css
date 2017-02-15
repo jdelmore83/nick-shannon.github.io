@@ -2,7 +2,10 @@ body {
     margin: 0px auto;
     width: 100%;
 }
- 
+header {
+     border: 1px solid powderblue;
+    padding: 30px;
+}
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
