@@ -3,7 +3,7 @@ body {
     width: 100%;
 }
 header {
-    height: 200px;
+    height: 10px;
 }    
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
