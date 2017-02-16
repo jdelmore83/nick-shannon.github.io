@@ -6,16 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
          <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
 	    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
-    </head>
-     <body>
-	<header>
-	test one two three. 	
-        </header>
-	     
-        <div id='printoutPanel'></div>
-        
-        <div id='myMap' style='width: 100%; height: 100%;'></div>
-        <script type='text/javascript'>
+	    <script type='text/javascript'>
             function loadMapScenario() {
                 var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
                     credentials: 'Aoqwq4MnPOtVqxAFpjmjLSCMwmgpxjcgNVJa9y50KRNOxCNVXXg30Eopyg9i5jrc',
@@ -34,5 +25,15 @@
 		
         </script>
         <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?branch=experimental&callback=loadMapScenario' async defer></script>
+    </head>
+     <body>
+	<header>
+	test one two three. 	
+        </header>
+	     
+        <div id='printoutPanel'></div>
+        
+        <div id='myMap' style='width: 100%; height: 100%;'></div>
+        
     </body>
 </html>
