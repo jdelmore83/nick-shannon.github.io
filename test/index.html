@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>My Test Map</title>
@@ -35,6 +35,12 @@ map.entities.push(data.results[0].Polygons);
 var countries = ['New Zealand','Australia','Japan', 'Singapore','Russia','France','Netherland','South Korea','Tonga','Ireland','Mongolia']; 
 var geoDataRequestOptions = { 
 getAllPolygons: true 
+
+//Use the GeoData API manager to get the State 
+Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(countries, geoDataRequestOptions, map, function (data) { 
+if (data.results && data.results.length > 0) { 
+map.entities.push(data.results[0].Polygons); 
+	
 
 }; 
 
