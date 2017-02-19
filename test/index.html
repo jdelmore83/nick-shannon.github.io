@@ -1,82 +1,116 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
-    <script type='text/javascript' src='/BingMapsCredentials.js'></script>
-    <script type='text/javascript'>
-    var map;
+    <head>
+        <title>My Test Map</title>
+        		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+	    	<meta charset="utf-8" />
+    		<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+		<script type='text/javascript' src='/BingMapsCredentials.js'></script>
+		<script type='text/javascript'>			
+		var map;
 
-    function GetMap()
-    {
-        map = new Microsoft.Maps.Map('#myMap', {
-            credentials: 'Aoqwq4MnPOtVqxAFpjmjLSCMwmgpxjcgNVJa9y50KRNOxCNVXXg30Eopyg9i5jrc',
-            zoom: 1
-        });
+         	function GetMap() {
+                map = new Microsoft.Maps.Map('#myMap', {
+		credentials: 'Aoqwq4MnPOtVqxAFpjmjLSCMwmgpxjcgNVJa9y50KRNOxCNVXXg30Eopyg9i5jrc', 
+		center: new Microsoft.Maps.Location(47.614, -122.165), 
+		zoom: 2 
 
-        //Create a layer
-        var layer1 = new Microsoft.Maps.Layer();
+}); 
+//Create an array of locations to get the boundaries of 
+var states = ['Dubai', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'Beijing', 'England', 'Scotland', 'Northern Island']; 
+var geoDataRequestOptions = { 
+entityType: 'AdminDivision1' 
+}; 
+Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
+//Use the GeoData API manager to get the State 
+Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(states, geoDataRequestOptions, map, function (data) { 
+if (data.results && data.results.length > 0) { 
+map.entities.push(data.results[0].Polygons); 
+} 
+}); 
 
-        //Add zoom information as metadata of the layer.
-        layer1.metadata = {
-            zoomRange: { min: 1, max: 3 }
-        };
+}); 
+//Create an array of locations to get the boundaries of 
+var countries = ['New Zealand','Australia','Japan', 'Singapore','Russia','France','Netherland','South Korea','Tonga','Ireland','Mongolia']; 
+var geoDataRequestOptions = { 
+getAllPolygons: true 
 
-        //Add 100 red pushpins
-        layer1.add(Microsoft.Maps.TestDataGenerator.getPushpins(100, null, { color: 'red' }));
+}; 
+Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
+//Use the GeoData API manager to get the boundary 
+Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(countries, geoDataRequestOptions, map, function (data) { 
+if (data.results && data.results.length > 0) { 
+map.entities.push(data.results[0].Polygons); 
+} 
+}); 
+}); 
+var center = map.getCenter(); 
+var polyline = new Microsoft.Maps.Polyline([new Microsoft.Maps.Location(-31.930627, 115.744237), 
+new Microsoft.Maps.Location(-31.930627, 115.744237), 
+new Microsoft.Maps.Location(-31.724948, 115.515871), 
+new Microsoft.Maps.Location(-31.531334, 115.307852), 
+new Microsoft.Maps.Location(-31.349785, 115.120182), 
+new Microsoft.Maps.Location(-31.180301, 114.952858), 
+new Microsoft.Maps.Location(-31.022883, 114.805882), 
+new Microsoft.Maps.Location(-30.877529, 114.679254), 
+new Microsoft.Maps.Location(-30.74424, 114.572973), 
+new Microsoft.Maps.Location(-30.615811, 114.478789), 
+new Microsoft.Maps.Location(-30.485035, 114.388451), 
+new Microsoft.Maps.Location(-30.351913, 114.301959), 
+new Microsoft.Maps.Location(-30.216444, 114.219313), 
+new Microsoft.Maps.Location(-30.07863, 114.140512), 
+new Microsoft.Maps.Location(-29.938469, 114.065558), 
+new Microsoft.Maps.Location(-31.022883, 114.805882), 
+new Microsoft.Maps.Location(-30.877529, 114.679254), 
+new Microsoft.Maps.Location(-30.74424, 114.572973), 
+new Microsoft.Maps.Location(-30.615811, 114.478789), 
+new Microsoft.Maps.Location(-30.485035, 114.388451), 
+new Microsoft.Maps.Location(-30.351913, 114.301959), 
+new Microsoft.Maps.Location(-30.216444, 114.219313), 
+new Microsoft.Maps.Location(-30.07863, 114.140512), 
+new Microsoft.Maps.Location(-29.938469, 114.065558), 
+new Microsoft.Maps.Location(-29.795962, 113.994449), 
+new Microsoft.Maps.Location(-29.651509, 113.927379), 
+new Microsoft.Maps.Location(-29.505514, 113.864542), 
+new Microsoft.Maps.Location(-29.357974, 113.805938), 
+new Microsoft.Maps.Location(-29.208891, 113.751565), 
+new Microsoft.Maps.Location(-29.058264, 113.701425), 
+new Microsoft.Maps.Location(-28.906094, 113.655518), 
+new Microsoft.Maps.Location(-28.75238, 113.613843), 
+new Microsoft.Maps.Location(-28.597554, 113.576511), 
+new Microsoft.Maps.Location(-28.442048, 113.543632), 
+new Microsoft.Maps.Location(-28.285861, 113.515207), 
+new Microsoft.Maps.Location(-28.128993, 113.491235), 
+new Microsoft.Maps.Location(-27.971445, 113.471716), 
+new Microsoft.Maps.Location(-27.813216, 113.456651), 
+new Microsoft.Maps.Location(-27.654307, 113.44604), 
+new Microsoft.Maps.Location(-27.483892, 113.441556), 
+new Microsoft.Maps.Location(-27.291145, 113.444875), 
+new Microsoft.Maps.Location(-27.076066, 113.455997), 
+new Microsoft.Maps.Location(-26.838656, 113.474921), 
+new Microsoft.Maps.Location(-26.578913, 113.501648), 
+new Microsoft.Maps.Location(-26.296839, 113.536178), 
+new Microsoft.Maps.Location(-25.992434, 113.57851)], null); 
 
-        //Add layer to map.
-        map.layers.insert(layer1);
 
-        //Create a layer
-        var layer2 = new Microsoft.Maps.Layer();
+map.entities.push(polyline); 
 
-        //Add zoom information as metadata of the layer.
-        layer2.metadata = {
-            zoomRange: { min: 4, max: 21 }
-        };
-
-        //Add 100 blue pushpins
-        layer2.add(Microsoft.Maps.TestDataGenerator.getPushpins(300, null, { color: 'blue' }));
-
-        //Add layer to map.
-        map.layers.insert(layer2);
-
-        //Add a viewchangeend event to the map so that it updates the visibility of the layers.
-        Microsoft.Maps.Events.addHandler(map, 'viewchangeend', updateLayerVisibility);
-
-        //Do an initial update of the visibility.
-        updateLayerVisibility();
-    }
-
-    function updateLayerVisibility() {
-        //Get the current zoom level of the map.
-        var zoom = map.getZoom();
-        var layer;
-
-        //Loop through the layers in the map and check to see if it has zoomRange metadata.
-        for(var i=0;i<map.layers.length;i++){
-            layer = map.layers[i];
-
-            if(layer.metadata && layer.metadata.zoomRange){
-                if (zoom >= layer.metadata.zoomRange.min && zoom <= layer.metadata.zoomRange.max) {
-                    layer.setVisible(true);
-                } else {
-                    layer.setVisible(false);
-                }
+	
             }
-        }
-    }
-    </script>
-</head>
-<body>
-    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+		
+        </script>
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?branch=experimental&callback=loadMapScenario' async defer></script>
+    </head>
+  <body>
+	<header>
+	test one two three. 	
+        </header>
+	     
+	     <div id="myMap" style="position:relative;width:600px;height:400px;"></div> 
+             <fieldset style="width:600px;margin-top:10px;"> 
+	     <legend>Limit Layer to Zoom Range Sample</legend> 
 
-    <fieldset style="width:600px;margin-top:10px;">
-        <legend>Limit Layer to Zoom Range Sample</legend>
-        This sample shows how to limit the visibility of layers to specified zoom level ranges. 
-        Zoom levels 1 - 3 will display red pushpin data, while all other zoom levels will have blue pushpin data.
-    </fieldset>
-</body>
+        
+    </body>
 </html>
