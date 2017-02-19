@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
     <head>
         <title>My Test Map</title>
@@ -17,26 +17,33 @@
 		zoom: 2 
 
 }); 
-			
-	//Create an array of locations to get the boundaries of 
-	var states = ['Dubai', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'Beijing', 'England', 'Scotland', 'Northern Island']; 
-	var geoDataRequestOptions = { 
-	entityType: 'AdminDivision1' 
-	}; 
-	Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
+//Create an array of locations to get the boundaries of 
+var states = ['Dubai', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'Beijing', 'England', 'Scotland', 'Northern Island']; 
+var geoDataRequestOptions = { 
+entityType: 'AdminDivision1' 
+}; 
+Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
+//Use the GeoData API manager to get the State 
+Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(states, geoDataRequestOptions, map, function (data) { 
+if (data.results && data.results.length > 0) { 
+map.entities.push(data.results[0].Polygons); 
+} 
+}); 
 
-	//Use the GeoData API manager to get the State 
-	Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(states, geoDataRequestOptions, map, function (data) { 
-	if (data.results && data.results.length > 0) { 
-	map.entities.push(data.results[0].Polygons); 
-	} 
-	}); 
+}); 
+//Create an array of locations to get the boundaries of 
+var countries = ['New Zealand','Australia','Japan', 'Singapore','Russia','France','Netherland','South Korea','Tonga','Ireland','Mongolia']; 
+var geoDataRequestOptions = { 
+getAllPolygons: true 
+
+}; 
+
+	
+            }
 		
-});
-			
-       
+        </script>
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?branch=experimental&callback=loadMapScenario' async defer></script>
     </head>
-    
   <body>
 	<header>
 	test one two three. 	
