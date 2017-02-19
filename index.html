@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
     <head>
         <title>My Test Map</title>
@@ -17,19 +17,25 @@
 		zoom: 2 
 
 
-}); 
-//Create an array of locations to get the boundaries of 
-var states = ['Dubai', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'Beijing', 'England', 'Scotland', 'Northern Island']; 
-var geoDataRequestOptions = { 
-entityType: 'AdminDivision1' 
-}; 
-Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
-//Use the GeoData API manager to get the State 
-Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(states, geoDataRequestOptions, map, function (data) { 
-if (data.results && data.results.length > 0) { 
-map.entities.push(data.results[0].Polygons); 
-} 
-}); 
+	}); 
+	
+	//Create an array of locations to get the boundaries of 
+	var layer = new Microsoft.Maps.Layer("MyStatesLayer");		
+	layer.add(new states = ['Dubai', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'Beijing', 'England', 'Scotland', 'Northern Island']; 
+	var geoDataRequestOptions = { 
+	entityType: 'AdminDivision1' 
+	map.layers.insert(layer);	  
+	
+	}; 
+
+	Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
+	//Use the GeoData API manager to get the State 
+	Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(states, geoDataRequestOptions, map, function (data) { 
+	if (data.results && data.results.length > 0) { 
+	map.entities.push(data.results[0].Polygons); 
+
+	} 
+	}); 
 
 }); 
 //Create an array of locations to get the boundaries of 
