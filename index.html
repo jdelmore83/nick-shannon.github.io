@@ -51,7 +51,22 @@
                     map.entities.push(data.results[0].Polygons);
                 }
             });
-        });
+		//Create an array of country boundaries to retrieve.
+		var CountryRegion = ['Russia', 'France'];
+
+		//Create geoData request options to retrieve country boundaries.
+		var countryRequestOptions = {
+		entityType: 'CountryRegion',
+		getAllPolygons: false,
+		};
+
+		//Use the GeoData API manager to retrieve the country boundaries.
+		Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(CountryRegion, countryRequestOptions, map, function (data) {
+			if (data.results && data.results.length > 0) {
+		map.entities.push(data.results[0].Polygons);
+		} 
+		}); 	
+    	    });
 
  
 var center = map.getCenter(); 
