@@ -17,40 +17,43 @@
 		zoom: 2 
 
 });
-var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
-    credentials: 'Your Bing Maps Key',
-    center: new Microsoft.Maps.Location(43.7, -79.3834),
-    zoom: 7
-});
-var geoDataRequestOptions = {
-    entityType: 'PopulatedPlace',
-	getAllPolygons: 'true'     
-};
-Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () {
-    //Use the GeoData API manager to get the boundary
-    Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(map.getCenter(), geoDataRequestOptions, map, function (data) {
-        if (data.results && data.results.length > 0) {
-            map.entities.push(data.results[0].Polygons);
-        }
-    });
-});
 
+        //Load the Spatial Data Services module.
+        Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () {
+            //Create an array of state boundaries to retrieve.
+            var states = ['Dubai', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'Beijing', 'England', 'Scotland', 'Northern Island'];
 
-//Create an array of locations to get the boundaries of 
-	var CountryRegion = ['New Zealand','Australia','Japan', 'Singapore','Russia','France','Netherland','South Korea','Tonga','Ireland','Mongolia']; 
-	var geoDataRequestOptions = { 
-	getAllPolygons: true, 
-	entityType: 'CountryRegion'
+            //Create geoData request options to retrieve state boundaries.
+            var stateRequestOptions = {
+                entityType: 'AdminDivision1',
+                getAllPolygons: false,
+            };
+        
+            //Use the GeoData API manager to get the State. 
+            Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(states, stateRequestOptions, map, function (data) {
+                if (data.results && data.results.length > 0) {
+                    map.entities.push(data.results[0].Polygons);
+                }
+            });
 
-}; 
-	Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () { 
-//Use the GeoData API manager to get the boundary 
-	Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(CountryRegion, geoDataRequestOptions, map, function (data) { 
-	if (data.results && data.results.length > 0) { 
-	map.entities.push(data.results[0].Polygons); 
-} 
-}); 
-}); 
+            //Create an array of country boundaries to retrieve.
+            var countries = ['New Zealand', 'Australia', 'Japan', 'Singapore', 'Russia', 'France', 'Netherland', 'South Korea', 'Tonga', 'Ireland', 'Mongolia'];
+
+            //Create geoData request options to retrieve country boundaries.
+            var countryRequestOptions = {
+                entityType: 'AdminDivision1',
+                getAllPolygons: false,
+            };
+
+            //Use the GeoData API manager to retrieve the country boundaries.
+            Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(countries, countryRequestOptions, map, function (data) {
+                if (data.results && data.results.length > 0) {
+                    map.entities.push(data.results[0].Polygons);
+                }
+            });
+        });
+
+ 
 var center = map.getCenter(); 
 var polyline = new Microsoft.Maps.Polyline([new Microsoft.Maps.Location(-31.930627, 115.744237), 
 new Microsoft.Maps.Location(-31.930627, 115.744237), 
