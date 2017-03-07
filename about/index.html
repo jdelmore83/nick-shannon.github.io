@@ -75,7 +75,8 @@
 
 
 <!-- Bing Maps -->
-<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+<div class="w3-offset">
+  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 <script type='text/javascript' src='/BingMapsCredentials.js'></script>
 <script type='text/javascript'>
 var map;
@@ -174,7 +175,8 @@ new Microsoft.Maps.Location(-25.992434, 113.57851)], null);
 
 
 map.entities.push(polyline);
-
+  
+</div>
 
 }
 
