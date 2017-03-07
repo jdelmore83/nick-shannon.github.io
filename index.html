@@ -125,11 +125,31 @@ map.entities.push(polyline);
 		
         </script>
         <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?branch=experimental&callback=loadMapScenario' async defer></script>
-    </head>
+   <script type="text/javascript">
+
+        // Wait for the page to load first
+        window.onload = function() {
+
+          //Get a reference to the link on the page
+          // with an id of "mylink"
+          var a = document.getElementById("mylink");
+
+          //Set code to run when the link is clicked
+          // by assigning a function to "onclick"
+          a.onclick = map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13})
+
+            
+          }
+        }
+    </script>
+	
+	
+	</head>
   <body>
 	<header>
 	test one two three. 
 	<input type="button" onclick="map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13})" value="Paris"/> 
+		<a id="mylink" href="https://nick-shannon.github.io/about/">linky</a> 
 	
         </header>
 	     
