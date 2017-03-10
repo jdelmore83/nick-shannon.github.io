@@ -151,7 +151,18 @@ map.entities.push(polyline);
  } 
  //--> 
  </SCRIPT>	
-	
+
+	    <SCRIPT>
+var el = document.getElementById('foo');
+el.onclick = showFoo;
+
+
+function showFoo() {
+  onclick="map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13});
+  return false;
+}
+	</SCRIPT>
+	    
 	</head>
   <body>
 	<header>
@@ -159,6 +170,8 @@ map.entities.push(polyline);
 	<input type="button" onclick="map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13})" value="Paris"/> 
 
 		<a href="javascript:openwindow()">Open a New Window</a>
+		
+		<a href="no-javascript.html" title="Get some foo!" id="foo">Show me some foo</a>
 	
         </header>
 	     
