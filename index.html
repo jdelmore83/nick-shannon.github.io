@@ -142,14 +142,23 @@ map.entities.push(polyline);
           }
         }
     </script>
-	
+
+ <SCRIPT language="JavaScript"> 
+ <!--hide 
+ function openwindow() 
+ { 
+ onclick="map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13}); 
+ } 
+ //--> 
+ </SCRIPT>	
 	
 	</head>
   <body>
 	<header>
 	test one two three. 
 	<input type="button" onclick="map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13})" value="Paris"/> 
-		<a id="mylink" href="https://nick-shannon.github.io/">linky</a> 
+
+		<a href="javascript:openwindow()">Open a New Window</a>
 	
         </header>
 	     
