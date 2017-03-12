@@ -120,6 +120,13 @@ test one two three.
 <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
 <fieldset style="width:600px;margin-top:10px;">
 <legend>Limit Layer to Zoom Range Sample</legend>
+  
+  <script type="text/javascript">
+function codeAddress() {
+map.setView({ center : new Microsoft.Maps.Location(48.857, 2.333), zoom: 13})
+}
+window.onload = codeAddress;
+</script>
 
 
 </body>
