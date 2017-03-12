@@ -7,8 +7,7 @@
 	    	<meta charset="utf-8" />
     		<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 		<script type='text/javascript' src='/BingMapsCredentials.js'></script>
-		<script type='text/javascript'>			
-		var map;
+		<script type='text/javascript'>					var map;
 
          	function GetMap() {
                 map = new Microsoft.Maps.Map('#myMap', {
@@ -18,8 +17,7 @@
 
 });
 
-        //Load the Spatial Data Services module.
-        Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () {
+        //Load the Spatial Data Services module.        Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () {
             //Create an array of state boundaries to retrieve.
             var states = ['Northern Ireland','VIC','Western Australia','New South Wales', 'Queensland', 'Northern Territory', 'California', 'nevada', 'utah', 'arizona', 'colorado', 'dc', 'maryland', 'new york', 'British Columbia', 'England', 'Scotland'];
 
@@ -39,8 +37,7 @@
             //Create an array of country boundaries to retrieve.
             var CountryRegion = ['New Zealand', 'Japan', 'Singapore', 'Netherland', 'South Korea', 'Tonga', 'Ireland', 'Mongolia', 'United Arab Emirates'];
 
-            //Create geoData request options to retrieve country boundaries.
-            var countryRequestOptions = {
+            //Create geoData request options to retrieve country boundaries.            var countryRequestOptions = {
                 entityType: 'CountryRegion',
                 getAllPolygons: true,
             };
@@ -50,7 +47,7 @@
                 if (data.results && data.results.length > 0) {
                     map.entities.push(data.results[0].Polygons);
                 }
-            });
+v            });
 		//Create an array of country boundaries to retrieve.
 		var CountryRegion = ['Russia', 'France', 'China'];
 
@@ -60,7 +57,7 @@
 		getAllPolygons: false,
 		};
 
-		//Use the GeoData API manager to retrieve the country boundaries.
+i		//Use the GeoData API manager to retrieve the country boundaries.
 		Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(CountryRegion, countryRequestOptions, map, function (data) {
 			if (data.results && data.results.length > 0) {
 		map.entities.push(data.results[0].Polygons);
@@ -80,7 +77,7 @@ new Microsoft.Maps.Location(-31.022883, 114.805882),
 new Microsoft.Maps.Location(-30.877529, 114.679254), 
 new Microsoft.Maps.Location(-30.74424, 114.572973), 
 new Microsoft.Maps.Location(-30.615811, 114.478789), 
-new Microsoft.Maps.Location(-30.485035, 114.388451), 
+dnew Microsoft.Maps.Location(-30.485035, 114.388451), 
 new Microsoft.Maps.Location(-30.351913, 114.301959), 
 new Microsoft.Maps.Location(-30.216444, 114.219313), 
 new Microsoft.Maps.Location(-30.07863, 114.140512), 
@@ -159,10 +156,10 @@ map.entities.push(polyline);
 	
         </header>
 	     
-	     <div id="myMap" style="position:relative;width:600px;height:400px;"></div> 
+	  <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
              <fieldset style="width:600px;margin-top:10px;"> 
-	     <legend>Limit Layer to Zoom Range Sample</legend> 
+		     <div><legend>Limit Layer to Zoom Range Sample</legend> </div>
 
-		     </div>
+		     </div> 
     </body>
 </html>
